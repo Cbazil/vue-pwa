@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <header>
-      <span>Journal</span>
-    </header>
     <main>
       <!-- <img src="./assets/logo.png" alt="Vue.js PWA"> -->
       <router-view></router-view>
@@ -22,6 +19,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 #app {
@@ -33,10 +31,11 @@ body {
 
 main {
   text-align: center;
-  margin-top: 40px;
+  /* margin-top: 40px; */
 }
 
 header {
+  text-align: left;
   margin: 0;
   height: 56px;
   padding: 0 16px 0 24px;
