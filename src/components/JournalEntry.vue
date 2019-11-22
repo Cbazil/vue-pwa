@@ -1,10 +1,19 @@
 <template>
  <div>
     <header>
-        <button id="entry" size="huge" class="back-btn" ><router-link to='/'><i class="double angle left icon"></i></router-link></button>
+      <div id="grid-container">
+        <div class="grid-child childOne">
+          <button id="entry" size="huge" class="back-btn" @click="saveEntry"><router-link to='/'><i class="double angle left icon"></i></router-link></button>
+        </div>
+        <div class="grid-child childTwo">
+            <p>{{ entry.date }}</p>
+        </div>
+      </div>
     </header>
     <main>
-        <input type="text" class="input-box">
+        <form>
+          <input type="text" ref="writing" class="input-box">
+        </form>
     </main>
  </div>
 </template>
@@ -13,31 +22,56 @@
 
 export default {
 
-data () {
- return {
-
+  data () {
+  return {
+        entry: {
+          story: '',
+          date: new Date().toDateString()
+        }
     }
   },
- methods: {
- 
-  }
+  mounted() {
+    this.focusInput();
+  },
+  methods: {
+    focusInput: function () {
+      console.log(this.$refs.writing);
+      this.$refs.writing.focus();
+    },
+    saveEntry: function() {
+      console.log('Saved');
+    }
+  } 
 }
 </script>
 
 <style scoped>
 header {
+  display: grid;
   text-align: left;
   margin: 0;
   height: 56px;
   padding: 0;
-  background: #ff8;
+  background: #356;
   color: #fff;
 }
-.back-btn, .back-btn:hover {
-  background: #ff8;
-  border: none;
+#grid-container {
+  display: grid;
+  grid-template-columns: 20% 80%;
   height: inherit;
-  width: 20%;
+}
+.back-btn, .back-btn:hover {
+  background: #356;
+  border: none;
+  width: 100%;
+}
+.grid-child {
+  position: relative;
+  top: 25%;
+}
+.childTwo {
+  font-size: 22px;
+  padding-left: 10%;
 
 }
 .icon {
