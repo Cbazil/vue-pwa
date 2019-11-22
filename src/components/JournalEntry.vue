@@ -12,7 +12,7 @@
     </header>
     <main>
         <form>
-          <input type="text" ref="writing" class="input-box">
+          <input v-model="entry.story" type="text" ref="writing" class="input-box">
         </form>
     </main>
  </div>
@@ -35,11 +35,17 @@ export default {
   },
   methods: {
     focusInput: function () {
-      console.log(this.$refs.writing);
+      // console.log(this.$refs.writing);
       this.$refs.writing.focus();
     },
     saveEntry: function() {
-      console.log('Saved');
+      this.$http.post('https://jsonplaceholder.typicode.com/posts', {
+        title: this.entry.date,
+        body: this.entry.story,
+        userId: 1
+      }).then(function(data){
+        // console.log(data);
+      });
     }
   } 
 }
