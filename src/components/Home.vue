@@ -4,9 +4,11 @@
       <span>Journal</span>
     </header>
     <main>
-      <div v-for="entry in entries" :key="entry.id" class="single-blog">
-          <p>{{ entry.body }}</p>
-      </div>
+      
+        <div v-for="entry in entries" :key="entry.id" class="single-blog">
+          <router-link :to="'/entry/' + entry.id" class="link-color"><p>{{ entry.body }}</p></router-link>
+        </div>
+      
     </main>
     <router-link to='/entry'><sui-button id="entry" size="huge" positive circular icon="add" /></router-link>
   </div>
@@ -50,5 +52,7 @@ main {
   border-radius: 4  px;
   text-align: left;
 }
-
+.link-color {
+  color: #000;
+}
 </style>
