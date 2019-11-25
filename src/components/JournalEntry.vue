@@ -12,7 +12,7 @@
     </header>
     <main>
         <form>
-          <input v-model="entry.story" type="text" ref="writing" class="input-box">
+          <textarea v-model="entry.story" type="text" ref="writing" class="input-box"></textarea>
         </form>
     </main>
  </div>
@@ -39,12 +39,8 @@ export default {
       this.$refs.writing.focus();
     },
     saveEntry: function() {
-      this.$http.post('https://jsonplaceholder.typicode.com/posts', {
-        title: this.entry.date,
-        body: this.entry.story,
-        userId: 1
-      }).then(function(data){
-        // console.log(data);
+      this.$http.post('https://journal-entries-c5adf.firebaseio.com/entries.json', this.entry).then(function(data){
+        console.log(data);
       });
     }
   } 
@@ -97,5 +93,9 @@ main {
   border: none;
   background: transparent;
   width: 100%;
+  height: 82vh;
+}
+textarea {
+  resize: none;
 }
 </style>

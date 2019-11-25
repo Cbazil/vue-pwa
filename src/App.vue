@@ -2,9 +2,7 @@
   <div id="app">
     <main>
       <!-- <img src="./assets/logo.png" alt="Vue.js PWA"> -->
-      <keep-alive>
         <router-view></router-view>
-      </keep-alive>
     </main>
   </div>
 </template>

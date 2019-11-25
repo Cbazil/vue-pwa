@@ -12,7 +12,7 @@
     </header>
     <main>
         <form>
-          <input type="text" ref="writing" class="input-box" :value="entry.body">
+          <textarea type="text" ref="writing" class="input-box" :value="entry.body"></textarea>
         </form>
     </main>
  </div>
@@ -29,10 +29,9 @@ data () {
   },
   created() {
     this.$http.get('https://jsonplaceholder.typicode.com/posts/' + this.id).then(function(data){
-      console.log(data);
-      this.entry = data.body;
-    });
-  }
+    this.entry = data.body;
+  });
+  },
 }
 </script>
 
@@ -58,6 +57,7 @@ header {
 }
 .grid-child {
   position: relative;
+  height: 30px;
   top: 25%;
 }
 .childTwo {
@@ -82,5 +82,10 @@ main {
   border: none;
   background: transparent;
   width: 100%;
+  height: 82vh;
 }
+textarea {
+  resize: none;
+}
+
 </style>
